@@ -4,9 +4,7 @@ import app.pizzeria.client.service.OrderService;
 import app.pizzeria.common.model.OrderDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,22 +21,15 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    private final String topic;
-
-    private final KafkaTemplate<String, OrderDto> kafkaTemplate;
-
-
     @Autowired
-    public OrderController(OrderService service, @Value("${kafka.producer.topic}") String topic, KafkaTemplate<String, OrderDto> kafkaTemplate) {
+    public OrderController(OrderService service) {
         this.orderService = service;
-        this.topic = topic;
-        this.kafkaTemplate = kafkaTemplate;
     }
 
     @PostMapping("")
     public ResponseEntity<String> createOrder(@RequestBody OrderDto order) {
         OrderDto savedOrder = orderService.saveOrder(order);
-        notifyCourier(savedOrder);
+        orderService.notifyPalmetto(savedOrder);
         return ResponseEntity.ok(String.format("Order for '%s' created successfully.", savedOrder.getOrderItem()));
     }
 
@@ -48,7 +39,4 @@ public class OrderController {
         return orderOpt.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    private void notifyCourier(OrderDto order) {
-        kafkaTemplate.send(topic, order.getId().toString(), order);
-    }
 }

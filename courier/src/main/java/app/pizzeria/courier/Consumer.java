@@ -1,10 +1,10 @@
 package app.pizzeria.courier;
 
-import app.pizzeria.courier.model.Notification;
-import app.pizzeria.common.model.OrderDto;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import app.pizzeria.common.model.NotificationDto;
+import app.pizzeria.common.model.OrderStatus;
+import app.pizzeria.courier.service.CourierService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
@@ -12,27 +12,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class Consumer {
 
-    private static final ObjectMapper MAPPER = new ObjectMapper();
-
-    @KafkaListener(topics = {"Order"})
-    public void consumeOrderMessage(OrderDto order) {
-        log.info("Received order message: {}", order);
-        System.out.println("Received order message: " + order.toString());
-    }
+    @Autowired
+    private CourierService courierService;
 
     @KafkaListener(topics = {"Notification"})
-    public void consumeNotificationMessage(String notificationStr) {
-        //TODO create NotificationDto - no need for ObjectMapper usage
-        Notification notification = convertStringToObject(notificationStr, Notification.class);
+    public void consumeNotificationMessage(NotificationDto notification) {
+        log.info("Received notification message: {}.", notification);
         System.out.println("Received notification message: " + notification.getMessage());
-    }
-
-    private <T> T convertStringToObject(String orderStr, Class<T> cls) {
-        try {
-            return MAPPER.readValue(orderStr, cls);
-        } catch (JsonProcessingException e) {
-            log.error("Error converting string to order object");
-            throw new RuntimeException(e);
+        if (OrderStatus.PIZZA_IS_READY.name().equals(notification.getOrder().getStatus().name())) {
+            courierService.processNotification(notification);
         }
     }
 

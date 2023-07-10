@@ -15,8 +15,6 @@ spring:
             enabled: true
             path: /h2-console
     kafka:
-        #bootstrap-servers: localhost:9093
-        #bootstrap-servers: 172.27.0.4:9092
         bootstrap-servers: localhost:9093
         consumer:
             group-id: client-group-id

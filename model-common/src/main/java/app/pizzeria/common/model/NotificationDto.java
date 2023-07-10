@@ -9,18 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-public class OrderDto {
+public class NotificationDto {
 
-    private Long id;
+    private String message;
 
-    private String customerName;
-
-    private String orderDate;
-
-    private long totalAmount;
-
-    private String orderItem;
-
-    private OrderStatus status;
+    private OrderDto order;
 
 }
