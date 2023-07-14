@@ -1,4 +1,4 @@
-package app.pizzeria.palmetto;
+package app.pizzeria.palmetto.service;
 
 import app.pizzeria.common.model.NotificationDto;
 import lombok.extern.slf4j.Slf4j;
@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 @Slf4j
-@Component
+@Service
 public class CourierNotificationService {
 
     private final String topic;

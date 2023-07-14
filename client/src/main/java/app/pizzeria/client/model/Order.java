@@ -1,7 +1,10 @@
 package app.pizzeria.client.model;
 
+import app.pizzeria.common.model.OrderStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,5 +39,9 @@ public class Order {
 
     @Column(name = "item")
     private String orderItem;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private OrderStatus status;
 
 }

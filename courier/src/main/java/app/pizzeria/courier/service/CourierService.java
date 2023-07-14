@@ -23,9 +23,9 @@ public class CourierService {
 
     private void notify(NotificationDto notification) {
         NotificationDto updatedNotification = new NotificationDto();
-        updatedNotification.setMessage("Pizza delivered"); //TODO
+        updatedNotification.setMessage("Pizza delivered");
         updatedNotification.setOrder(notification.getOrder());
-        updatedNotification.getOrder().setStatus(OrderStatus.PIZZA_DELIVERED);
+        updatedNotification.getOrder().setStatus(OrderStatus.ORDER_DELIVERED);
         producer.notify(updatedNotification);
     }
 

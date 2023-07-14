@@ -1,14 +1,13 @@
-package app.pizzeria.palmetto;
+package app.pizzeria.palmetto.service;
 
 import app.pizzeria.common.model.OrderDto;
-import app.pizzeria.palmetto.service.PalmettoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 @Slf4j
-@Component
+@Service
 public class Consumer {
 
     @Autowired

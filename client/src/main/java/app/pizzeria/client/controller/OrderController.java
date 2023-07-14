@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -37,6 +38,12 @@ public class OrderController {
     public ResponseEntity<OrderDto> getOrder(@PathVariable Long orderId) {
         Optional<OrderDto> orderOpt = orderService.getOrderById(orderId);
         return orderOpt.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("")
+    public List<OrderDto> getOrders() {
+        List<OrderDto> orders = orderService.getOrders();
+        return orders;
     }
 
 }
