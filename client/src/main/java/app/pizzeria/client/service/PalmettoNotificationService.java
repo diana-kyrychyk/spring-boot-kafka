@@ -1,4 +1,4 @@
-package app.pizzeria.client;
+package app.pizzeria.client.service;
 
 import app.pizzeria.common.model.OrderDto;
 import org.springframework.beans.factory.annotation.Autowired;

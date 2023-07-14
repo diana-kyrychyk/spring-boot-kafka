@@ -31,3 +31,16 @@ build/
 
 ### VS Code ###
 .vscode/
+
+.mvn/
+client/.mvn/
+client/mvnw
+client/mvnw.cmd
+courier/.mvn/
+courier/mvnw
+courier/mvnw.cmd
+mvnw
+mvnw.cmd
+palmetto/.mvn/
+palmetto/mvnw
+palmetto/mvnw.cmd
