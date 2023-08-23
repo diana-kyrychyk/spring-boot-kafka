@@ -1,0 +1,12 @@
+spring:
+    rabbitmq:
+        host: localhost
+        password: guest
+        port: 15672
+        username: guest
+        routingkey: Notification
+rabbitmq:
+    producer:
+        queue: Notification
+    consumer:
+        queue: Notification

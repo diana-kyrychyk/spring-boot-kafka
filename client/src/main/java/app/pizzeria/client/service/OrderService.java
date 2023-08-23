@@ -2,6 +2,7 @@ package app.pizzeria.client.service;
 
 import app.pizzeria.client.model.Order;
 import app.pizzeria.client.repository.OrderRepository;
+import app.pizzeria.client.service.producer.PalmettoNotificationService;
 import app.pizzeria.common.model.OrderDto;
 import app.pizzeria.common.model.OrderStatus;
 import jakarta.persistence.EntityNotFoundException;

@@ -3,6 +3,7 @@ package app.pizzeria.palmetto.service;
 import app.pizzeria.common.model.NotificationDto;
 import app.pizzeria.common.model.OrderDto;
 import app.pizzeria.common.model.OrderStatus;
+import app.pizzeria.palmetto.service.producer.CourierNotificationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
