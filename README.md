@@ -1,6 +1,8 @@
 ### Module "Kafka" of Java Global Mentoring Program
 
-This is Pizza Ordering System application, which showcases a microservices architecture with Apache Kafka. The system allows customers to place pizza orders online, and the orders are processed by the "Palmetto" pizzeria service. The system consists of three Spring Boot applications: "Client App," "Palmetto App," and "Courier App."
+### Module "Messaging in Java: RabbitMQ, ActiveMQ" of Java Global Mentoring Program
+
+This is Pizza Ordering System application, which showcases a microservices architecture with three messages brokers: Apache Kafka, ActiveMQ, RabbitMQ. The system allows customers to place pizza orders online, and the orders are processed by the "Palmetto" pizzeria service. The system consists of three Spring Boot applications: "Client App," "Palmetto App," and "Courier App."
 
 ### Application Modules
 
@@ -53,5 +55,23 @@ This screenshot displays the "Order" topic in the Kafka UI. It shows a message r
 
 This screenshot illustrates the "Notification" topic in the Kafka UI. It displays messages related to the status of orders in the Pizza Ordering System. One message indicates the creation of an order, and another message indicates the successful delivery of an order. The "Courier App" consumes messages from this topic to facilitate order delivery, and the "Client App" subscribes to this topic to receive updates on the order status.
 
+### Accessing Management Consoles
+
+#### ActiveMQ Console
+You can access the ActiveMQ management console by opening your web browser and navigating to [http://localhost:8161/admin/queues.jsp](http://localhost:8161/admin/queues.jsp). This console allows you to manage queues and other ActiveMQ settings.
+
+- **Username:** admin
+- **Password:** admin
+
+![ActiveMQ UI](images/activemq_console.jpg)
+
+#### RabbitMQ Console
+To access the RabbitMQ management console, open your web browser and go to [http://localhost:15672/#/queues](http://localhost:15672/#/queues). This console provides tools for managing queues and monitoring RabbitMQ.
+
+- **Username:** guest
+- **Password:** guest
+
+![RabbitMQ UI](images/rabbitmq_console.jpg)
+
 ### Conclusion
-The Pizza Ordering System application demonstrates a microservices architecture with Apache Kafka as the message broker. It allows customers to place orders online, and the orders are processed by the "Palmetto" pizzeria service. The system showcases the usage of Kafka topics for communication between services and demonstrates the benefits of a loosely coupled, scalable, and event-driven architecture.
+The Pizza Ordering System application demonstrates a microservices architecture with Apache Kafka, ActiveMQ, RabbitMQ as the message brokers. It allows customers to place orders online, and the orders are processed by the "Palmetto" pizzeria service. The system showcases the usage of Kafka topics for communication between services and demonstrates the benefits of a loosely coupled, scalable, and event-driven architecture.

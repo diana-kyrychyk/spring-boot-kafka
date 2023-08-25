@@ -2,6 +2,7 @@ package app.pizzeria.courier.service;
 
 import app.pizzeria.common.model.NotificationDto;
 import app.pizzeria.common.model.OrderStatus;
+import app.pizzeria.courier.service.producer.ClientNotificationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

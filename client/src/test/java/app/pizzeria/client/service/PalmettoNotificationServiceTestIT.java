@@ -1,5 +1,6 @@
 package app.pizzeria.client.service;
 
+import app.pizzeria.client.service.producer.PalmettoNotificationServiceKafkaImpl;
 import app.pizzeria.common.model.OrderDto;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -40,7 +41,7 @@ class PalmettoNotificationServiceTestIT {
     private EmbeddedKafkaBroker embeddedKafkaBroker;
 
     @Autowired
-    private PalmettoNotificationService producer;
+    private PalmettoNotificationServiceKafkaImpl producer;
 
     @BeforeAll
     void setUp() {

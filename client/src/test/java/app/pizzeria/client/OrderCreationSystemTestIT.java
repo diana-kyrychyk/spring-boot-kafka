@@ -1,6 +1,6 @@
 package app.pizzeria.client;
 
-import app.pizzeria.client.service.PalmettoNotificationService;
+import app.pizzeria.client.service.producer.PalmettoNotificationServiceKafkaImpl;
 import app.pizzeria.common.model.OrderDto;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -55,7 +55,7 @@ public class OrderCreationSystemTestIT {
     private TestRestTemplate restTemplate;
 
     @SpyBean
-    private PalmettoNotificationService producer;
+    private PalmettoNotificationServiceKafkaImpl producer;
 
     @Captor
     ArgumentCaptor<OrderDto> orderArgumentCaptor;

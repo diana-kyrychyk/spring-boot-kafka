@@ -2,6 +2,7 @@ package app.pizzeria.client.service;
 
 import app.pizzeria.client.model.Order;
 import app.pizzeria.client.repository.OrderRepository;
+import app.pizzeria.client.service.producer.PalmettoNotificationServiceKafkaImpl;
 import app.pizzeria.common.model.OrderDto;
 import app.pizzeria.common.model.OrderStatus;
 import org.junit.jupiter.api.Test;
@@ -26,7 +27,7 @@ class OrderServiceTest {
     private OrderRepository repository;
 
     @Mock
-    private PalmettoNotificationService producer;
+    private PalmettoNotificationServiceKafkaImpl producer;
 
     @InjectMocks
     private OrderService orderService;
